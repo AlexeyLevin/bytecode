@@ -41,6 +41,16 @@ public class ClassGen {
         mv.visitEnd();
     }
 
+    /*
+        generate method like this:
+        public static int min(int a, int b) {
+        if (a <= b)
+            return a;
+        else
+            return b;
+        }
+    */
+
     private void generateMinMethod(final ClassWriter cw ) {
         final MethodVisitor mv = cw.visitMethod(Opcodes.ACC_PUBLIC + Opcodes.ACC_STATIC,
                 "min", // method name
@@ -49,7 +59,7 @@ public class ClassGen {
                 null);   // method attributes
         mv.visitCode();
         final Label elseLabel = new Label();
-        // BEGIN (write your solution here)
+        
         mv.visitVarInsn(Opcodes.ILOAD, 1);
         mv.visitVarInsn(Opcodes.ILOAD, 0);
         mv.visitJumpInsn(Opcodes.IF_ICMPLE, elseLabel);
@@ -60,16 +70,16 @@ public class ClassGen {
         mv.visitInsn(Opcodes.IRETURN);
         mv.visitMaxs(1, 2);
         mv.visitEnd();
-        /*
-        public static int min(int a, int b) {
-        if (a <= b)
-            return a;
-        else
-            return b;
-        }
-        */
-        // END
+        
     }
+    
+     /*
+        generate method like this:
+        public static int min(int a, int b, int c) {
+            if (a < b && a < c) return a;
+            if (b < c) return b;
+            return c;
+        }*/
 
     private void generateMin2Method(final ClassWriter cw ) {
         final MethodVisitor mv = cw.visitMethod(Opcodes.ACC_PUBLIC + Opcodes.ACC_STATIC,
@@ -80,7 +90,7 @@ public class ClassGen {
         mv.visitCode();
         final Label elseLabel = new Label();
         final Label elseLabel2 = new Label();
-        // BEGIN (write your solution here)
+
         mv.visitVarInsn(Opcodes.ILOAD, 1);
         mv.visitVarInsn(Opcodes.ILOAD, 0);
         mv.visitJumpInsn(Opcodes.IF_ICMPLT, elseLabel);
@@ -99,12 +109,7 @@ public class ClassGen {
         mv.visitVarInsn(Opcodes.ILOAD, 2);
         mv.visitInsn(Opcodes.IRETURN);
         mv.visitMaxs(2, 3);
-        /*public static int min(int a, int b, int c) {
-            if (a < b && a < c) return a;
-            if (b < c) return b;
-            return c;
-        }*/
-        // END
+       
         mv.visitEnd();
     }
 
