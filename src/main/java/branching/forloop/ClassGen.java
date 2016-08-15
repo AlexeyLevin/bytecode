@@ -50,7 +50,7 @@ public class ClassGen {
         Label forLabel = new Label();
         Label label = new Label();
         mv.visitCode();
-        // BEGIN (write your solution here)
+
         //int result = 0;
         mv.visitInsn(Opcodes.ICONST_0);
         mv.visitVarInsn(Opcodes.ISTORE, 1);
@@ -95,7 +95,6 @@ public class ClassGen {
             }
             return result;
         }*/
-        // END
     }
 
 }
