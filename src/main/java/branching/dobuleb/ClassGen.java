@@ -49,7 +49,7 @@ public class ClassGen {
                 null,    // exceptions
                 null);   // method attributes
         mv.visitCode();
-        // BEGIN (write your solution here)
+        
         //b * b store to b
         mv.visitVarInsn(Opcodes.DLOAD, 2);
         mv.visitVarInsn(Opcodes.DLOAD, 2);
@@ -79,7 +79,6 @@ public class ClassGen {
                 return b * b - 4 * a * c;
         }*/
         mv.visitMaxs(4, 6);
-        // END
         mv.visitEnd();
     }
 
@@ -91,7 +90,7 @@ public class ClassGen {
                 null);    // method attributes
         mv.visitCode();
         final Label elseLable = new Label();
-        // BEGIN (write your solution here)
+
         mv.visitInsn(Opcodes.DCONST_0);
         mv.visitVarInsn(Opcodes.DLOAD, 0);
         mv.visitInsn(Opcodes.DCMPG);
@@ -103,7 +102,8 @@ public class ClassGen {
         mv.visitInsn(Opcodes.DNEG);
         mv.visitInsn(Opcodes.DRETURN);
         mv.visitMaxs(2, 2);
-        /*public static double abs(final double a) {
+        /*
+        public static double abs(final double a) {
             if (a >= 0) {
             return a;
             } else {
@@ -111,15 +111,8 @@ public class ClassGen {
             }
         }
         */
-        // END
         mv.visitEnd();
     }
-    /*
 
- Вам понадобится работа с инструкцией LDC - загрузить на стек значение из пула констант. Пример:
-mv.visitLdcInsn(4.0);
-
-Для умножения используется инструкция: DMUL, для вычитания: DSUB.
-*/
 
 }
